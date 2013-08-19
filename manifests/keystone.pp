@@ -23,7 +23,7 @@
 # [debug] Log at a debug-level. Optional. Defaults to false.
 # [bind_host] Address that keystone binds to. Optional. Defaults to  '0.0.0.0'
 # [internal_address] Internal address for keystone. Optional. Defaults to  $public_address
-# [admin_address] Keystone admin address. Optional. Defaults to  $internal_address
+# [admin_address] Keystone admin address. Optional. Defaults to  $public_address
 # [glance] Set up glance endpoints and auth. Optional. Defaults to  true
 # [nova] Set up nova endpoints and auth. Optional. Defaults to  true
 # [swift] Set up swift endpoints and auth. Optional. Defaults to false
@@ -112,7 +112,7 @@ class openstack::keystone (
   if($admin_address) {
     $admin_real = $admin_address
   } else {
-    $admin_real = $internal_real
+    $admin_real = $public_address
   }
   if($glance_public_address) {
     $glance_public_real = $glance_public_address
